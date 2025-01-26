@@ -1,0 +1,36 @@
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__dance{
+    position: fixed;
+    top: -65px;
+    right: 0;
+  }
+}
+
+.number-tel {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(86, 86, 136);
+}
+
+
+@media (hover: hover) {
+  .number-tel {
+    transition: color 0.3s ease;
+  }
+
+  .number-tel:hover {
+    color: rgb(144, 144, 238);
+  }
+}

@@ -1,0 +1,85 @@
+:root {
+	--color-main-bg: rgb(255, 185, 234);
+
+
+	--color-header: black;
+	--color-header-border: rgb(255, 255, 255);
+	--header-scroll-shadow: 0 15px 10px rgb(0, 0, 0);
+
+	--hero-info-bg: rgba(184, 135, 11, 0.573);
+	--hero-info-shadow: 4px -4px 6px 4px rgb(0, 0, 0);
+
+
+
+
+	--color-v3: rgb(255, 215, 0);
+
+
+	--color-card-advantages: rgb(0, 51, 102);
+	--shadow-card-advantages: 0 4px 20px rgba(0, 0, 0, 0.88);
+
+
+	--color-card-reviews: rgb(0, 51, 102);
+	--reviews-card-shadow:  2px 2px 4px rgb(0, 0, 0);
+	--active-v1: 0 0 8px $color-blue, 0 0 20px $color-slate-blue, 0 0 40px $color-blue;
+
+
+
+	--color-card-choose: rgb(0, 51, 102);
+	--choose-link-shadow: 0 0 5px 10px rgb(255, 255, 255);
+	--choose-link-hover-shadow: 0 0 10px 10px rgb(240, 22, 22);
+	--choose-link-bg: rgb(0, 0, 0);
+
+	--shadow-doc: 0 4px 20px rgba(0, 0, 0, 0.88);
+
+	--shadow-logo: rgb(148, 122, 122);
+
+
+	--accordion-bg: rgb(255, 255, 255);
+	--accordion-item-hover-shadow: 0px 4px 20px rgba(5, 5, 5, 0.867), 0px 8px 40px rgb(19, 19, 28);
+
+
+
+
+
+	--color-text-v1: rgb(255, 0, 0);
+	--color-text-v2: rgb(255, 255, 255);
+
+
+	--text-shadow-v1: 0 0 0 $color-magenta;
+	--text-shadow-v2: 2px 2px 4px rgb(250, 235, 215);
+
+
+
+	--hover-shadow-v1: 0 0 8px rgb(42, 61, 233), 0 0 20px rgb(255, 255, 255), 0 0 40px rgb(0, 255, 251);
+
+
+	--color-hover-v1: rgba(39, 48, 227, 0.895);
+
+
+	--big-radius: 16px;
+	--btn-radius: 6px;
+
+	--color-neutral: rgb(156, 163, 175);
+
+	--color-pop-up: rgba(21, 21, 21, 0.792);
+	--close-open-back: rgba(21, 21, 21, 0.2);
+
+
+	--round-img-width: 100vmax;
+	--round-img-height: 100vmax;
+	--bg-image: url("./image/rocket-takeoff.jpg");
+
+
+
+
+	--color-blue: #0000CD;
+	/* Синий */
+	--color-orange: #D2691E;
+	/* Оранжевый */
+	--color-magenta: #FF00FF;
+	/* Магента */
+	--color-slate-blue: #7B68EE;
+	/* Сине-серый */
+
+}

@@ -1,0 +1,138 @@
+.theme-switcher {
+  width: 50px;
+  position: relative;
+  cursor: pointer;
+
+  &__img {
+    width: 50px;
+    height: 50px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10px;
+    transform: rotate(-40deg);
+    width: 20px;
+    height: 3px;
+    background-color: rgb(114, 188, 239);
+    box-shadow: -1px 0 1px rgb(114, 188, 239);
+    transition: transform ease-in .4s;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: rgb(23, 29, 184);
+    transition: transform ease-in .4s, background-color .3s;
+  }
+
+
+  &--off {
+    
+    &::before {
+      transform: translate(-1px, 20px) rotate(40deg);
+    }
+
+    &::after {
+      transform: translate(0, 34px);
+      background-color: red;
+    }
+
+  }
+
+}
+
+
+
+
+
+
+
+@keyframes dance {
+  0% {
+    background-position: 0px -20px;
+    /* Первое изображение */
+  }
+
+  6.67% {
+    background-position: -200px -20px;
+    /* Второе изображение */
+  }
+
+  13.33% {
+    background-position: -400px -20px;
+    /* Третье изображение */
+  }
+
+  20% {
+    background-position: -600px -20px;
+    /* Четвертое изображение */
+  }
+
+  26.67% {
+    background-position: -800px -20px;
+    /* Пятое изображение */
+  }
+
+  33.33% {
+    background-position: 0px -290px;
+    /* Шестое изображение */
+  }
+
+  40% {
+    background-position: -200px -290px;
+    /* Седьмое изображение */
+  }
+
+  46.67% {
+    background-position: -400px -290px;
+    /* Восьмое изображение */
+  }
+
+  53.33% {
+    background-position: -600px -290px;
+    /* Девятое изображение */
+  }
+
+  60% {
+    background-position: -800px -290px;
+    /* Десятое изображение */
+  }
+
+  66.67% {
+    background-position: 0px -560px;
+    /* Одиннадцатое изображение */
+  }
+
+  73.33% {
+    background-position: -200px -560px;
+    /* Двенадцатое изображение */
+  }
+
+  80% {
+    background-position: -400px -560px;
+    /* Тринадцатое изображение */
+  }
+
+  86.67% {
+    background-position: -600px -560px;
+    /* Четырнадцатое изображение */
+  }
+
+  93.33% {
+    background-position: -800px -560px;
+    /* Пятнадцатое изображение */
+  }
+
+  100% {
+    background-position: 0 -20px;
+    /* Возврат к первому изображению */
+  }
+}

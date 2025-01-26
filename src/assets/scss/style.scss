@@ -1,0 +1,72 @@
+@use './reset';
+@use './mediaMixins';
+@use './fonts';
+@use './variables';
+@use './animations';
+@use './helpers';
+
+@use './components/logo';
+@use './components/switch-theme';
+@use './components/man_sprite';
+
+@use './blocks/header-content';
+
+
+
+
+body {
+  min-height: 100vh;
+  color: var(--color-text-v2);
+  background-color: black;
+  font-family: sans-serif;
+}
+
+
+.white-theme-body {
+	background-color: rgb(250, 235, 215);
+}
+
+.white-theme-body .content-slide {
+	background-color: rgb(250, 235, 215);
+	color: black;
+}
+
+.white-theme-body .header {
+	
+}
+
+
+.wrapper-width {
+	max-width: 1576px;
+	width: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 0 auto;
+}
+
+.header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 10px;
+  border-bottom: solid 1px wheat;
+  backdrop-filter: grayscale(1) contrast(3) blur(1px);
+  transition: box-shadow .3s ease-in, border-color 1s ease-out;
+}
+
+
+.header {
+
+  & .logo-site {
+    animation: move-x 5s infinite linear alternate;
+  
+
+    &::before {
+      animation: rotate 5s infinite linear;
+    }
+  }
+
+}

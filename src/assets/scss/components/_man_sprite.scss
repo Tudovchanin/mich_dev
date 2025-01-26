@@ -1,0 +1,101 @@
+
+.man-sprite {
+
+	width: 200px;
+	height: 250px;
+	width: 200px;
+	overflow: hidden;
+	background-image: url('../img/sprite.png');
+	background-repeat: no-repeat;
+	background-position: 0px -20px;
+	transform: scale(.4);
+
+  &--dance {
+    animation: dance steps(1) 4s infinite;
+  }
+}
+
+
+
+
+@keyframes dance {
+	0% {
+		background-position: 0px -20px;
+		/* Первое изображение */
+	}
+
+	6.67% {
+		background-position: -200px -20px;
+		/* Второе изображение */
+	}
+
+	13.33% {
+		background-position: -400px -20px;
+		/* Третье изображение */
+	}
+
+	20% {
+		background-position: -600px -20px;
+		/* Четвертое изображение */
+	}
+
+	26.67% {
+		background-position: -800px -20px;
+		/* Пятое изображение */
+	}
+
+	33.33% {
+		background-position: 0px -290px;
+		/* Шестое изображение */
+	}
+
+	40% {
+		background-position: -200px -290px;
+		/* Седьмое изображение */
+	}
+
+	46.67% {
+		background-position: -400px -290px;
+		/* Восьмое изображение */
+	}
+
+	53.33% {
+		background-position: -600px -290px;
+		/* Девятое изображение */
+	}
+
+	60% {
+		background-position: -800px -290px;
+		/* Десятое изображение */
+	}
+
+	66.67% {
+		background-position: 0px -560px;
+		/* Одиннадцатое изображение */
+	}
+
+	73.33% {
+		background-position: -200px -560px;
+		/* Двенадцатое изображение */
+	}
+
+	80% {
+		background-position: -400px -560px;
+		/* Тринадцатое изображение */
+	}
+
+	86.67% {
+		background-position: -600px -560px;
+		/* Четырнадцатое изображение */
+	}
+
+	93.33% {
+		background-position: -800px -560px;
+		/* Пятнадцатое изображение */
+	}
+
+	100% {
+		background-position: 0 -20px;
+		/* Возврат к первому изображению */
+	}
+}

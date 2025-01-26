@@ -1,0 +1,29 @@
+.logo-site {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: relative;
+}
+
+.logo-site__img {
+  border-radius: 100%;
+}
+
+.logo-site::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: solid 4px;
+  border-radius: 100%;
+  border-color: var(--color-blue) var(--color-orange) var(--color-magenta) var(--color-slate-blue);
+  box-shadow:
+    0 0 10px var(--color-blue),
+    0 0 15px var(--color-orange),
+    0 0 20px var(--color-magenta),
+    0 0 25px var(--color-slate-blue) inset;
+}
