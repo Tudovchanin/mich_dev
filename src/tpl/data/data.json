@@ -1,3 +1,8 @@
-{ 
-    "name": "Ivan"
+{
+    "hero": {
+        "title": "Mich Dev",
+        "sub_title": "New Dev vector",
+        "tag_title": "h1",
+        "class": "hero-title"
+    }
 }

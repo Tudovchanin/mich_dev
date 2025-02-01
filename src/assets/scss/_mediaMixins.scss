@@ -10,8 +10,8 @@
   }
 }
 
-@mixin max_1600 {
-  @media (max-width: 1600px) {
+@mixin max_1680 {
+  @media (max-width: 1680px) {
     @content;
   }
 }

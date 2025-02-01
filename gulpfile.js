@@ -1,7 +1,8 @@
 "use strict"
 // Импорт необходимых модулей из Gulp и других пакетов
-const {src, dest} = require("gulp");
+const { src, dest } = require("gulp");
 const gulp = require("gulp");
+
 const autoprefixer = require("gulp-autoprefixer"); // Добавляет вендорные префиксы к CSS
 const cssbeautify = require("gulp-cssbeautify"); // Форматирует CSS для улучшения читаемости
 const removeComments = require('gulp-strip-css-comments');// Удаляет комментарии из CSS
@@ -13,10 +14,14 @@ const uglify = require("gulp-uglify");// Минимизирует JavaScript
 
 const plumber = require("gulp-plumber");// Обрабатывает ошибки в потоках Gulp
 const panini = require("panini");// Шаблонизатор для HTML
+
 const imagemin = require("gulp-imagemin"); // Оптимизирует изображения
+const pngquant = require("gulp-pngquant"); // Импортируем плагин pngquant
+const imagewebp = require("gulp-webp");// Конвертирует изображения в формат WebP
+
 const del = require("del");// Удаляет файлы и папки
 const notify = require("gulp-notify");  // Отправляет уведомления об ошибках
-const imagewebp = require("gulp-webp");// Конвертирует изображения в формат WebP
+
 const browserSync = require("browser-sync").create(); // Создает локальный сервер для разработки
 
 /* Paths */
@@ -26,26 +31,35 @@ const distPath = "dist/";// Путь к выходным файлам
 // Определение путей для различных типов файлов
 const path = {
     build: {
-        html: distPath, // Путь для собранных HTML файлов
-        css: distPath + "assets/css/", // Путь для собранных CSS файлов
-        js: distPath + "assets/js/", // Путь для собранных JS файлов
-        images: distPath + "assets/img/", // Путь для собранных изображений
-        fonts: distPath + "assets/fonts/" // Путь для собранных шрифтов
+        html: distPath, 
+        css: distPath + "assets/css/",
+        js: distPath + "assets/js/",
+        images: distPath + "assets/img/",
+        fonts: distPath + "assets/fonts/",
+        audio: distPath + "assets/audio/",
+        video:  distPath + "assets/video/",
     },
     src: {
-        html: srcPath + "*.html", // Путь к исходным HTML файлам
-        css: srcPath + "assets/scss/*.scss", // Путь к исходным SCSS файлам
-        js: srcPath + "assets/js/*.js", // Путь к исходным JS файлам
-        images: srcPath + "assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}", // Путь к исходным изображениям
-        fonts:  srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
-    }, // Путь к исходным шрифтам
+        html: srcPath + "*.html",
+        cssVariables: srcPath + "assets/css/*.css",
+        css: srcPath + "assets/scss/*.scss",
+        js: srcPath + "assets/js/*.js",
+        images: srcPath + "assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}",
+        imagesNotPng: srcPath + "assets/img/**/*.{jpg,svg,gif,ico,webp,webmanifest,xml,json}",
+        imagesPng: srcPath +  "assets/img/**/*.png",
+        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}",
+        audio: srcPath + "assets/audio/**/*.*",
+        video: srcPath + "assets/video/**/*.*",
+    }, 
     watch: {
-        html:   srcPath + "**/*.html",  // Наблюдение за изменениями в HTML файлах
-        js:     srcPath + "assets/js/**/*.js", // Наблюдение за изменениями в JS файлах
-        css:    srcPath + "assets/scss/**/*.scss", // Наблюдение за изменениями в SCSS файлах
-        images: srcPath + "assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}", // Наблюдение за изменениями в изображениях
-        fonts:  srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
-    }, // Наблюдение за изменениями в шрифтах
+        html: srcPath + "**/*.html",
+        js: srcPath + "assets/js/**/*.js",
+        css: srcPath + "assets/scss/**/*.scss",
+        images: srcPath + "assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}",
+        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}",
+        audio: srcPath + "assets/audio/**/*.*",
+        video: srcPath + "assets/video/**/*.*"
+    },
     clean: "./" + distPath  // Путь для очистки выходной папки перед сборкой
 }
 
@@ -62,26 +76,26 @@ function serve() {
 function html() {
     panini.refresh(); // Обновляет шаблоны Panini при необходимости
 
-    return src(path.src.html, {base: srcPath}) // Читает HTML файлы из исходной папки
+    return src(path.src.html, { base: srcPath }) // Читает HTML файлы из исходной папки
         .pipe(plumber()) // Обрабатывает ошибки в потоке Gulp
         .pipe(panini({  // Обрабатывает шаблоны с помощью Panini
             root: srcPath,
             layouts: srcPath + "tpl/layouts/",
             partials: srcPath + "tpl/partials/",
             data: srcPath + "tpl/data/"
-          }))
+        }))
         .pipe(dest(path.build.html))  // Сохраняет собранные HTML файлы в выходную папку
-        .pipe(browserSync.reload({stream: true}));  // Обновляет страницу в браузере при изменении HTML файла
+        .pipe(browserSync.reload({ stream: true }));  // Обновляет страницу в браузере при изменении HTML файла
 }
 
 // Функция для обработки SCSS файлов и их компиляции в CSS
 function css() {
-    return src(path.src.css, {base: srcPath + "assets/scss/"})
+    return src(path.src.css, { base: srcPath + "assets/scss/" })
         .pipe(plumber({ // Обрабатывает ошибки компиляции SCSS 
-            errorHandler : function(err) {
+            errorHandler: function (err) {
                 notify.onError({
-                    title:    "SCSS Error",
-                    message:  "Error: <%= error.message %>"
+                    title: "SCSS Error",
+                    message: "Error: <%= error.message %>"
                 })(err);
                 this.emit('end');
             }
@@ -102,17 +116,17 @@ function css() {
             extname: ".css"
         }))
         .pipe(dest(path.build.css)) // Сохраняет минифицированный CSS файл в выходной папке 
-        .pipe(browserSync.reload({stream: true})); // Обновляет страницу в браузере при изменении CSS файла 
+        .pipe(browserSync.reload({ stream: true })); // Обновляет страницу в браузере при изменении CSS файла 
 }
 
 // Функция для обработки JavaScript файлов 
 function js() {
-    return src(path.src.js, {base: srcPath + "assets/js/"})
+    return src(path.src.js, { base: srcPath + "assets/js/" })
         .pipe(plumber({ // Обрабатывает ошибки компиляции JavaScript 
-            errorHandler : function(err) {
+            errorHandler: function (err) {
                 notify.onError({
-                    title:    "JS Error",
-                    message:  "Error: <%= error.message %>"
+                    title: "JS Error",
+                    message: "Error: <%= error.message %>"
                 })(err);
                 this.emit('end');
             }
@@ -125,40 +139,69 @@ function js() {
             extname: ".js"
         }))
         .pipe(dest(path.build.js)) // Сохраняет минифицированный JS файл в выходной папке 
-        .pipe(browserSync.reload({stream: true})); // Обновляет страницу в браузере при изменении JS файла 
+        .pipe(browserSync.reload({ stream: true })); // Обновляет страницу в браузере при изменении JS файла 
 }
 
 // Функция для оптимизации изображений
-function images() {
-    return src(path.src.images, {base: srcPath + "assets/img/"})
+function imagesNotPng() {
+    return src(path.src.imagesNotPng, { base: srcPath + "assets/img/" })
+        
         .pipe(imagemin([ // Оптимизирует изображения с помощью imagemin 
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.mozjpeg({quality: 75, progressive: true}),
+            imagemin.gifsicle({ interlaced: true }),
+            imagemin.mozjpeg({ quality: 75, progressive: true }),
             imagemin.optipng({optimizationLevel: 5}),
             imagemin.svgo({
                 plugins: [
-                    {removeViewBox: true},
-                    {cleanupIDs: false}
+                    { removeViewBox: true },
+                    { cleanupIDs: false }
                 ]
             })
         ]))
+
         .pipe(dest(path.build.images)) // Сохраняет оптимизированные изображения в выходной папке 
-        .pipe(browserSync.reload({stream: true})); // Обновляет страницу в браузере при изменении изображений
+        .pipe(browserSync.reload({ stream: true })); // Обновляет страницу в браузере при изменении изображений
+}
+
+function optimizePng() {
+    return src(path.src.imagesPng, { base: srcPath + "assets/img/" })
+        .pipe(pngquant({
+            quality: '65-80'
+        }))
+        .pipe(dest(path.build.images)) // Сохраняет оптимизированные PNG
+        .pipe(browserSync.reload({ stream: true }));
 }
 
 // Функция для конвертации изображений в формат WebP 
 function webpImages() {
-    return src(path.src.images, {base: srcPath + "assets/img/"})
+    return src(path.src.images, { base: srcPath + "assets/img/" })
         .pipe(imagewebp()) // Конвертирует изображения в формат WebP 
         .pipe(dest(path.build.images)) // Сохраняет WebP изображения в выходной папке 
 }
 
 // Функция для копирования шрифтов из исходной папки в выходную папку
 function fonts() {
-    return src(path.src.fonts, {base: srcPath + "assets/fonts/"})
-    .pipe(dest(path.build.fonts)) // Сохраняет шрифты в выходной папке 
-    .pipe(browserSync.reload({stream: true})); // Обновляет страницу в браузере при изменении шрифтов 
+    return src(path.src.fonts, { base: srcPath + "assets/fonts/" })
+        .pipe(dest(path.build.fonts)) 
+        .pipe(browserSync.reload({ stream: true })); 
 }
+
+// Функция для копирования аудио из исходной папки в выходную папку
+function audio() {
+    return src(path.src.audio, { base: srcPath + "assets/audio/" })
+        .pipe(dest(path.build.audio)) 
+        .pipe(browserSync.reload({ stream: true }));
+}
+
+
+// Функция для копирования видео из исходной папки в выходную папку
+function video() {
+    return src(path.src.video, { base: srcPath + "assets/video/" })
+        .pipe(dest(path.build.video)) 
+        .pipe(browserSync.reload({ stream: true }));
+}
+
+
+
 
 // Функция для очистки выходной папки перед сборкой проекта 
 function clean() {
@@ -170,12 +213,16 @@ function watchFiles() {
     gulp.watch([path.watch.html], html); // Наблюдает за изменениями HTML файлов и запускает задачу html()
     gulp.watch([path.watch.css], css); // Наблюдает за изменениями SCSS файлов и запускает задачу css()
     gulp.watch([path.watch.js], js); // Наблюдает за изменениями JS файлов и запускает задачу js()
-    gulp.watch([path.watch.images], images); // Наблюдает за изменениями изображений и запускает задачу images()
+    gulp.watch(path.watch.images, gulp.parallel(imagesNotPng, optimizePng, webpImages));
+   // Наблюдает за изменениями изображений и запускает задачу images()
     gulp.watch([path.watch.fonts], fonts); // Наблюдает за изменениями шрифтов и запускает задачу fonts()
+    gulp.watch([path.watch.audio], audio);
+    gulp.watch([path.watch.video], video);
 }
 
+
 // Определение последовательности задач сборки проекта (clean -> html, css, js, images)
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, webpImages, fonts));
+const build = gulp.series(clean, gulp.parallel(html, css, js, optimizePng, imagesNotPng, webpImages, fonts, audio, video));
 
 // Определение задачи watch (сборка проекта -> наблюдение за файлами -> запуск сервера)
 const watch = gulp.parallel(build, watchFiles, serve);
@@ -183,13 +230,16 @@ const watch = gulp.parallel(build, watchFiles, serve);
 
 
 // Экспортируем задачи Gulp так чтобы их можно было вызывать из командной строки или других скриптов.
-exports.html = html
-exports.css = css
-exports.js = js
-exports.images = images
-exports.webpImages = webpImages
-exports.fonts = fonts
-exports.clean = clean
-exports.build = build
-exports.watch = watch
-exports.default = watch /* Задача по умолчанию - запускать режим наблюдения */
+exports.html = html;
+exports.css = css;
+exports.js = js;
+exports.imagesNotPng = imagesNotPng;
+exports.optimizePng = optimizePng;
+exports.webpImages = webpImages;
+exports.fonts = fonts;
+exports.audio = audio;
+exports.video = video;
+exports.clean = clean;
+exports.build = build;
+exports.watch = watch;
+exports.default = watch; /* Задача по умолчанию - запускать режим наблюдения */

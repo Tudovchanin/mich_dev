@@ -1,0 +1,19 @@
+@use './mediaMixins' as *;
+.section-advantages {
+  overflow-x: hidden;
+  background-image: url('../img/vite-city.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+
+  &__title {
+    padding-top: 50px;
+    color: rgb(250, 235, 215);
+
+		@include max_767 {
+			padding-top: 25px;
+		}
+
+  }
+}

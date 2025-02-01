@@ -1,0 +1,235 @@
+@use './helpers';
+@use './mediaMixins' as *;
+
+
+.header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  padding-top: 10px;
+  background-image: url('../img/Dust.png');
+  border-bottom: solid 1px rgba(245, 222, 179, 0.365);
+  transition: box-shadow .3s ease-in, border-color 1s ease-out;
+}
+
+
+
+
+.header {
+  & .logo-site {
+    animation: move-x 5s infinite linear alternate;
+    @include max_767 {
+      width: 70px;
+      height: 70px;
+      &::before {
+        border-width: 2px;
+      }
+    }
+
+    @include max_480 {
+      width: 50px;
+      height: 50px;
+
+      &::before {
+        box-shadow:
+    0 0 10px var(--color-blue),
+    0 0 15px var(--color-orange),
+    0 0 10px var(--color-magenta),
+    0 0 10px var(--color-slate-blue) inset;
+      }
+    }
+
+    &::before {
+      animation: rotate 5s infinite linear;
+    }
+  }
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+
+  @include max_767 {
+    gap: 30px;
+  }  
+
+  &__container-switch {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    @include max_767 {
+      gap: 30px;
+      margin-left: auto;
+    }
+    @include max_380 {
+      justify-content: space-between;
+      position: absolute;
+      bottom: -55px;
+      left: 0;
+      right: 0;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  &__dance {
+    position: relative;
+    width: 90px;
+    height: 110px;
+    cursor: pointer;
+
+    @include max_767 {
+      width: 50px;
+      height: 76px ;
+    }
+
+    
+    
+    // стрелка показывает на кнопку dance
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 50px;
+    //   height: 50px;
+    //   left: 0;
+    //   bottom: 0;
+    //   transform: rotate(-180deg);
+    //   background-image: url(../img/icons8-стрелка-100.png);
+    //   background-repeat: no-repeat;
+    //   background-size: contain;
+    //   opacity: 0;
+    //   transition: transform .5s ease-in, opacity .5s ease-out;
+    // }
+    // @include helpers.hover-and-pointer {
+    //   &:hover::before {
+    //     transform: translate(-40vw, -30px) rotate(-180deg);
+    //     opacity: 1;
+    //   }
+    // }
+    // &:active::before {
+    //   transform: translate(-40vw, -30px) rotate(-180deg);
+    //   opacity: 1;
+    // }
+
+
+
+    & div {
+      position: absolute;
+   
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.45);
+      @include max_767  {
+        transform:translate(-50%, -50%) scale(.3);
+      }
+    }
+  }
+}
+
+.dance-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+  transition: transform .3s ease-in;
+  background-image: url('../img/dance-btn.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  animation: notActiveBtnDance 2s infinite linear;
+  @include max_767 {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: conic-gradient(from 84deg at 50% 50%, rgb(30, 80, 218) 22%, rgb(184, 50, 50) 75%);
+    bottom: -3px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    z-index: -1;
+    filter: blur(2px);
+    box-shadow: 0 0 0 0 rgb(191, 54, 17) inset;
+    animation: rotate 3s infinite linear;
+  }
+
+  &:active::before {
+    background: none;
+  }
+
+  @include helpers.hover-and-pointer {
+    &::before {
+      transition: filter .3s ease-in;
+    }
+
+    &:hover::before {
+      filter: blur(15px);
+    }
+  }
+
+
+  &--active {
+    background-image: url('../img/dance-btn-active.png');
+    box-shadow: 0 0 0 0 rgb(146, 146, 239) inset;
+    animation: activeBtnDance 2s infinite linear;
+  }
+
+
+}
+
+
+@keyframes activeBtnDance {
+  0% {
+    box-shadow: 0 0 0 0 rgb(146, 146, 239) inset;
+  }
+
+  25% {
+    box-shadow: 5px 10px 5px 1px rgba(82, 82, 124, 0.3) inset;
+  }
+
+  50% {
+    box-shadow: 10px 20px 10px 2px rgba(82, 82, 124, 0.5) inset;
+  }
+
+  75% {
+    box-shadow: 5px 10px 5px 1px rgba(82, 82, 124, 0.3) inset;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(146, 146, 239) inset;
+  }
+}
+
+
+@keyframes notActiveBtnDance {
+  0% {
+    box-shadow: 0 0 0 0 rgb(191, 54, 17) inset;
+  }
+
+  25% {
+    box-shadow: 5px 10px 5px 1px rgb(191, 54, 17, 0.3) inset;
+  }
+
+  50% {
+    box-shadow: 10px 20px 10px 2px rgb(191, 54, 17, 0.5) inset;
+  }
+
+  75% {
+    box-shadow: 5px 10px 5px 1px rgb(191, 54, 17, 0.5) inset;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(191, 54, 17) inset;
+  }
+}

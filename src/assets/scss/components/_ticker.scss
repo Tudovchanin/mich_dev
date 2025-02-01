@@ -1,0 +1,53 @@
+@use './mediaMixins' as *;
+
+@keyframes ticker {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.ticker {
+	font-size: 24px;
+	background-color: black;
+
+	
+
+	&__in {
+		display: flex;
+		width: fit-content;
+		animation: ticker 60s linear infinite;
+		-webkit-transform-style: preserve-3d;
+		/* Фикс возможного глюка с морганием в Сафари */
+
+		&--revers {
+			animation: ticker 60s linear infinite reverse;
+		}
+	}
+
+	
+
+	&__item {
+		padding: .5em .75em;
+		white-space: nowrap;
+		font-size: 40px;
+		-webkit-backface-visibility: hidden;
+		/* Фикс возможного глюка с морганием в Сафари */
+		color: var(--color-magenta);
+
+@include max_767 {
+		font-size: 20px;
+	}
+
+		&:nth-child(3n + 1) {
+			color: var(--color-blue);
+		}
+
+		&:nth-child(3n + 2) {
+			color: var(--color-orange)
+		}
+	}
+}

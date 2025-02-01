@@ -1,4 +1,6 @@
 
+
+
 .man-sprite {
 
 	width: 200px;
@@ -8,7 +10,7 @@
 	background-image: url('../img/sprite.png');
 	background-repeat: no-repeat;
 	background-position: 0px -20px;
-	transform: scale(.4);
+
 
   &--dance {
     animation: dance steps(1) 4s infinite;

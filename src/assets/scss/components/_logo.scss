@@ -18,7 +18,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border: solid 4px;
+  border-width: 4px;
+  border-style: solid;
   border-radius: 100%;
   border-color: var(--color-blue) var(--color-orange) var(--color-magenta) var(--color-slate-blue);
   box-shadow:

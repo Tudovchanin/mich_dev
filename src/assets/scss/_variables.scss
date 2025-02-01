@@ -2,7 +2,7 @@
 	--color-main-bg: rgb(255, 185, 234);
 
 
-	--color-header: black;
+	--color-header: rgb(231, 231, 231);
 	--color-header-border: rgb(255, 255, 255);
 	--header-scroll-shadow: 0 15px 10px rgb(0, 0, 0);
 
@@ -20,8 +20,8 @@
 
 
 	--color-card-reviews: rgb(0, 51, 102);
-	--reviews-card-shadow:  2px 2px 4px rgb(0, 0, 0);
-	--active-v1: 0 0 8px $color-blue, 0 0 20px $color-slate-blue, 0 0 40px $color-blue;
+
+	--active-v1: 0 0 8px var(--color-blue), 0 0 20px var(--color-slate-blue), 0 0 40px var(--color-blue);
 
 
 
@@ -46,8 +46,8 @@
 	--color-text-v2: rgb(255, 255, 255);
 
 
-	--text-shadow-v1: 0 0 0 $color-magenta;
-	--text-shadow-v2: 2px 2px 4px rgb(250, 235, 215);
+	--text-shadow-v1: 2px 2px 4px  var(--color-magenta);
+	--text-shadow-v2: 2px 2px 20px var(--color-blue);
 
 
 
@@ -68,18 +68,31 @@
 
 	--round-img-width: 100vmax;
 	--round-img-height: 100vmax;
-	--bg-image: url("./image/rocket-takeoff.jpg");
+	--bg-image: url("../img/rocket-takeoff.jpg");
 
 
 
 
 	--color-blue: #0000CD;
-	/* Синий */
-	--color-orange: #D2691E;
-	/* Оранжевый */
-	--color-magenta: #FF00FF;
-	/* Магента */
-	--color-slate-blue: #7B68EE;
-	/* Сине-серый */
 
+	--color-orange: #D2691E;
+
+	--color-magenta: #FF00FF;
+
+	--color-slate-blue: #7B68EE;
+
+	--size-cube: 300px;
+}
+
+@media (max-width:1024px) {
+	:root {
+		--size-cube: 200px;
+	}
+}
+
+
+@media (max-width:575px) {
+	:root {
+		--size-cube: 50vw;
+	}
 }
