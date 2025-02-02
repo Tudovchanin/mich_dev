@@ -624,7 +624,8 @@ document.addEventListener('DOMContentLoaded', function () {
     switchTheme($themeSwitcherArr, soundPlay, soundSwitchTheme);
   }
 
-  // Dance man Header
+
+  // Dance man Header and run dog
   const $manHeader = document.querySelector('.header-content .man-sprite');
   const $danceHeaderBtn = document.querySelector('.header-content__dance-btn');
   const audioDance = new Audio('assets/audio/michael_jackson.mp3');
@@ -637,11 +638,13 @@ document.addEventListener('DOMContentLoaded', function () {
   };
   const audioBtnDance = new Audio('assets/audio/sound-dance-button.mp3')
 
+  const $runDog = document.querySelector('.run-dog');
   if ($manHeader && $danceHeaderBtn) {
     $danceHeaderBtn.addEventListener('click', () => {
       danceMan($manHeader, $danceHeaderBtn);
       toggleAudio(audioObj);
       soundPlay(audioBtnDance);
+      $runDog.classList.toggle('run-dog-run',  $manHeader.classList.contains('man-sprite--dance'));
     })
   }
 
@@ -671,8 +674,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // canvas
 
-  let $containerCanvas = document.querySelector('.container-canvas');
-  let $canvas = document.getElementById('starsCanvas');
+  const $containerCanvas = document.querySelector('.container-canvas');
+  const $canvas = document.getElementById('starsCanvas');
 
   if ($containerCanvas && $canvas) {
     setCanvas($containerCanvas, $canvas);
@@ -748,6 +751,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     initObserver(itemsHidden, optionHidden);
+  }
+
+
+  //  Dog mk
+
+  const $allCardGradient = document.querySelectorAll('.advantages-list__item');
+  const $dog = document.querySelector('.dog');
+  const soundDogMk = new Audio('assets/audio/mortal_combat_toasty.mp3');
+  let flagVisibleDog = false;
+  if ($allCardGradient[0]) {
+
+    $allCardGradient.forEach((card, index) => {
+
+      card.addEventListener('click', (e) => {
+
+        const indexShowDog = getRandomValue(0, 0);
+
+        if (index === indexShowDog) {
+         
+
+          if (!flagVisibleDog) {
+            console.log('show dog');
+            flagVisibleDog = true;
+            $dog.classList.remove('hidden-dog');
+            soundPlay(soundDogMk);
+            
+
+            setTimeout(() => {
+              $dog.classList.add('hidden-dog');
+              flagVisibleDog = false;
+            }, 1000);
+          }
+        }
+      })
+    })
+  }
+
+  // function get random value
+
+  function getRandomValue(min, max) {
+
+    const number = Math.floor(Math.random() * (max - min + 1)) + min;
+    return number;
   }
 
 });
