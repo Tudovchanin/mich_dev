@@ -26,7 +26,7 @@ const browserSync = require("browser-sync").create(); // Создает лока
 
 /* Paths */
 const srcPath = "src/";// Путь к исходным файлам
-const distPath = "dist/";// Путь к выходным файлам
+const distPath = "docs/";// Путь к выходным файлам
 
 // Определение путей для различных типов файлов
 const path = {
