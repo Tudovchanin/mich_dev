@@ -1,0 +1,37 @@
+@use '../utils/mediaMixins' as *;
+@use '../utils/helpers';
+
+@use '../components/_cube.scss';
+@use '../components/decor';
+@use '../blocks/cube-list';
+
+.projects {
+  position: relative;
+
+  &__bg-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+  }
+
+  &__container-decor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__title {
+    padding-top: 50px;
+    color: rgb(250, 235, 215);
+
+    @include max_767 {
+      padding-top: 25px;
+    }
+  }
+}

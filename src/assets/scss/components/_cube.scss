@@ -1,0 +1,230 @@
+
+@use '../utils/helpers';
+@use '../utils/mediaMixins' as *;
+
+.cube {
+  position: relative;
+  width: var(--size-cube);
+  height: var(--size-cube);
+  transform-style: preserve-3d;
+  animation: rotateCub 50s infinite linear;
+  cursor: pointer;
+
+  @include helpers.hover-and-pointer {
+
+    & .cube__face {
+      transition: transform .5s, border 1s, box-shadow 1s, background-color 1s;
+    }
+
+    &:hover:not(.fast-rotate) {
+      animation-play-state: paused;
+
+      .cube__face {
+        border: transparent solid 1px;
+        box-shadow: 0 0 100px 20px white;
+        background-color: wheat;
+        filter: blur(0px);
+
+        &--front {
+          transform: rotateY(0deg) translateZ(calc(var(--size-cube) / 1.9));
+          // opacity: 0;
+        }
+
+        &--back {
+          transform: rotateY(180deg) translateZ(calc(var(--size-cube) / 1.9));
+          // opacity: 0;
+        }
+
+        &--left {
+          transform: rotateY(-90deg) translateZ(calc(var(--size-cube) / 1.9));
+          // opacity: 0;
+        }
+
+        &--right {
+          transform: rotateY(90deg) translateZ(calc(var(--size-cube) / 1.9));
+          // opacity: 0;
+        }
+
+        &--top {
+          transform: rotateX(90deg) translateZ(calc(var(--size-cube) / 1.9));
+          // opacity: 0;
+        }
+
+        &--bottom {
+          transform: rotateX(-90deg) translateZ(calc(var(--size-cube) / 1.9));
+          // opacity: 0;
+        }
+      }
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:nth-child(1) {
+    z-index: 6;
+  }
+
+  &:nth-child(2) {
+    z-index: 5;
+  }
+
+  &:nth-child(3) {
+    z-index: 4;
+  }
+
+  &:nth-child(4) {
+    z-index: 3;
+  }
+
+  &:nth-child(5) {
+    z-index: 2;
+  }
+
+  &:nth-child(6) {
+    z-index: 1;
+  }
+
+
+
+  &__face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--size-cube);
+    height: var(--size-cube);
+
+    backface-visibility: hidden; // управляет видимостью задней части , уменьшает лесенку
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgb(0, 0, 205) rgb(210, 105, 30) rgb(123, 104, 238) rgb(255, 0, 255);
+    filter: blur(1px);
+    box-shadow:
+      0 -10px 20px 0 rgb(0, 0, 205),
+      10px 0 20px 0 rgb(210, 105, 30),
+      0 10px 20px 0 rgb(123, 104, 238),
+      -10px 0 20px 0 rgb(255, 0, 255),
+
+      0 -10px 10px 0 rgb(0, 0, 205) inset,
+      10px 0 10px 0 rgb(210, 105, 30) inset,
+      0 10px 10px 0 rgb(123, 104, 238) inset,
+      -10px 0 10px 0 rgb(255, 0, 255) inset;
+
+
+
+
+    &--front {
+      transform: rotateY(0deg) translateZ(calc(var(--size-cube) / 2));
+      // opacity: 0;
+    }
+
+    &--back {
+      transform: rotateY(180deg) translateZ(calc(var(--size-cube) / 2));
+      // opacity: 0;
+    }
+
+    &--left {
+      transform: rotateY(-90deg) translateZ(calc(var(--size-cube) / 2));
+      // opacity: 0;
+    }
+
+    &--right {
+      transform: rotateY(90deg) translateZ(calc(var(--size-cube) / 2));
+      // opacity: 0;
+    }
+
+    &--top {
+
+      transform: rotateX(90deg) translateZ(calc(var(--size-cube) / 2));
+      // opacity: 0;
+    }
+
+    &--bottom {
+      transform: rotateX(-90deg) translateZ(calc(var(--size-cube) / 2));
+      // opacity: 0;
+    }
+
+    &--vrnas {
+      background-image: url('../img/vrnas.png');
+      background-repeat: no-repeat;
+      background-size: 95% 95%;
+      background-position: center;
+    }
+
+    &--appweather {
+      background-image: url('../img/appweather.png');
+      background-repeat: no-repeat;
+      background-size: 95% 95%;
+      background-position: center;
+    }
+
+    &--game {
+      background-image: url('../img/game.png');
+      background-repeat: no-repeat;
+      background-size: 95% 95%;
+      background-position: center;
+    }
+
+
+    &--space {
+      background-image: url('../img/space.png');
+      background-repeat: no-repeat;
+      background-size: 95% 95%;
+      background-position: center;
+    }
+
+    &--cat-dog {
+
+      background-image: url('../img/cat_dog.png');
+      background-repeat: no-repeat;
+      background-size: 95% 95%;
+      background-position: center;
+
+    }
+
+
+    &--slider-29 {
+
+      background-image: url('../img/slider_29.png');
+      background-repeat: no-repeat;
+      background-size: 95% 95%;
+      background-position: center;
+    }
+  }
+
+}
+
+.fast-rotate {
+  animation: rotate-decrease .5s linear infinite;
+}
+
+
+
+
+@keyframes rotateCub {
+  from {
+    transform: rotateY(0deg);
+
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes rotate-decrease {
+  from {
+    transform: rotateY(0deg) scale3d(1, 1, 1);
+  }
+
+  to {
+    transform: rotateY(360deg) scale3d(0, 0, 0);
+  }
+}

@@ -1,0 +1,53 @@
+
+.decor {
+  display: grid;
+
+  &__line {
+    // outline: solid rgb(13, 11, 11) 20px;
+  }
+
+  &__line:nth-child(1) {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: rgb(13, 11, 11);
+    }
+  }
+
+  &__line:nth-child(2) {
+    position: relative;
+    outline: solid rgb(13, 11, 11) 20px;
+
+    &::before {
+      display: none;
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 25%;
+      height: 100%;
+      transform: translateX(-50%);
+      background-color: rgb(13, 11, 11);
+    }
+  }
+
+  &__line:nth-child(3) {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: rgb(13, 11, 11);
+    }
+  }
+}

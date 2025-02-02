@@ -1,0 +1,19 @@
+<section id="advantages" class="section-advantages">
+  <div class="container-canvas">
+    <h2 class="section-advantages__title sub-title wrapper-width center-x">Our advantages</h2>
+
+
+    <ul class="advantages-list wrapper-width center-x">
+      {{#each data.advantages}}
+      <li class="advantages-list__item card-gradient">
+        <h3 class="card-gradient__title">{{this.title}}</h3>
+        <p class="card-gradient__paragraph">{{this.paragraph}}</p>
+        <div class="card-gradient__gradient"></div>
+      </li>
+      {{/each}}
+    </ul>
+
+   
+    <canvas class="container-canvas__canvas" id="starsCanvas"></canvas>
+  </div>
+</section>

@@ -1,0 +1,107 @@
+
+@use '../utils/mediaMixins' as *;
+@use '../utils/helpers';
+
+.dance-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+  transition: transform .3s ease-in;
+  background-image: url('../img/dance-btn.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  animation: notActiveBtnDance 2s infinite linear;
+
+  @include max_767 {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: conic-gradient(from 84deg at 50% 50%, rgb(30, 80, 218) 22%, rgb(184, 50, 50) 75%);
+    bottom: -3px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    z-index: -1;
+    filter: blur(2px);
+    box-shadow: 0 0 0 0 rgb(191, 54, 17) inset;
+    animation: rotate 3s infinite linear;
+  }
+
+  &:active::before {
+    background: none;
+  }
+
+  @include helpers.hover-and-pointer {
+    &::before {
+      transition: filter .3s ease-in;
+    }
+
+    &:hover::before {
+      filter: blur(15px);
+    }
+  }
+
+
+  &--active {
+    background-image: url('../img/dance-btn-active.png');
+    box-shadow: 0 0 0 0 rgb(146, 146, 239) inset;
+    animation: activeBtnDance 2s infinite linear;
+  }
+
+
+}
+
+@keyframes activeBtnDance {
+  0% {
+    box-shadow: 0 0 0 0 rgb(146, 146, 239) inset;
+  }
+
+  25% {
+    box-shadow: 5px 10px 5px 1px rgba(82, 82, 124, 0.3) inset;
+  }
+
+  50% {
+    box-shadow: 10px 20px 10px 2px rgba(82, 82, 124, 0.5) inset;
+  }
+
+  75% {
+    box-shadow: 5px 10px 5px 1px rgba(82, 82, 124, 0.3) inset;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(146, 146, 239) inset;
+  }
+}
+
+@keyframes notActiveBtnDance {
+  0% {
+    box-shadow: 0 0 0 0 rgb(191, 54, 17) inset;
+  }
+
+  25% {
+    box-shadow: 5px 10px 5px 1px rgb(191, 54, 17, 0.3) inset;
+  }
+
+  50% {
+    box-shadow: 10px 20px 10px 2px rgb(191, 54, 17, 0.5) inset;
+  }
+
+  75% {
+    box-shadow: 5px 10px 5px 1px rgb(191, 54, 17, 0.5) inset;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(191, 54, 17) inset;
+  }
+}

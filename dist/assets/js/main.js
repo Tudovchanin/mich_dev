@@ -643,9 +643,6 @@ document.addEventListener('DOMContentLoaded', function () {
       toggleAudio(audioObj);
       soundPlay(audioBtnDance);
     })
-
-
-
   }
 
   // Sound button Slider
@@ -682,30 +679,75 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // link style
+  const $linkCube = document.querySelectorAll('.cube');
 
-const $linkCube = document.querySelectorAll('.cube');
+  if ($linkCube[0]) {
 
-if ($linkCube[0]) {
+    $linkCube.forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetElement = e.currentTarget;
+        targetElement.classList.add('fast-rotate');
+
+        setTimeout(() => {
+          targetElement.classList.remove('fast-rotate');
+          window.open(el.href);
+
+        }, 500);
+      });
+    })
+  }
+  // animation
+
+  const itemsHidden = document.querySelectorAll(".hidden-animation");
+  const optionHidden = {
+    observerOptions: {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.6,
+    }
+  }
 
 
+  if (itemsHidden) {
 
-  $linkCube.forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetElement = e.currentTarget;
-      targetElement.classList.add('fast-rotate');
-    
-      setTimeout(() => {
-        targetElement.classList.remove('fast-rotate');
-        window.open(el.href);
-       
-      }, 500);
-    });
-  })
+    function initObserver(
+      items,
+      {
+        visibleClass = "visible-animation",
+        hiddenClass = "hidden-animation",
+        observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 1,
+        },
+        unobserve = false,
+      }
+    ) {
 
-  
-}
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log("Элемент в зоне видимости:", entry.target);
+            entry.target.classList.add(visibleClass);
+            entry.target.classList.remove(hiddenClass);
 
 
+            if (unobserve) {
+              observer.unobserve(entry.target);
+            }
+          } else {
+
+            entry.target.classList.remove(visibleClass);
+            entry.target.classList.add(hiddenClass);
+          }
+        });
+      }, observerOptions);
+
+      items.forEach((item) => observer.observe(item));
+    }
+
+    initObserver(itemsHidden, optionHidden);
+  }
 
 });

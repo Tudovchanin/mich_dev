@@ -1,0 +1,47 @@
+@use '../utils/helpers';
+@use '../utils/mediaMixins' as *;
+
+.cube-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+
+  perspective: 2000px;
+  perspective-origin: 50% 50%;
+  column-gap: 200px;
+  row-gap: 100px;
+
+  padding-top: 120px;
+  padding-right: 200px;
+  padding-left: 200px;
+  padding-bottom: 120px;
+
+  @include max_1680 {
+    grid-template-columns: 1fr 1fr;
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+
+  @include max_1279 {
+    column-gap: 100px;
+    perspective-origin: 50% 20%;
+  }
+
+  @include max_1024 {
+    column-gap: 50px;
+    row-gap: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @include max_575 {
+    perspective: 4000px;
+    perspective-origin: 50% 20%;
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+
+
+}

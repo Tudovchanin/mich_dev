@@ -1,4 +1,9 @@
-@use './mediaMixins' as *;
+@use '../utils/mediaMixins' as *;
+@use '../components/canvas';
+@use '../components/card-gradient';
+@use '../blocks/advantages-list';
+
+
 .section-advantages {
   overflow-x: hidden;
   background-image: url('../img/vite-city.webp');

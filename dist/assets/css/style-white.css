@@ -1,0 +1,115 @@
+.white-theme-body {
+    background-color: rgb(250, 235, 215);
+}
+
+.white-theme-body .ticker {
+    background-color: rgb(250, 235, 215);
+}
+
+.white-theme-body .content-slide {
+    background-color: rgb(250, 235, 215);
+    color: black;
+}
+
+.white-theme-body .header {
+    background-image: url("../img/charcoal-smudge.png");
+    border-bottom: 1px black solid;
+}
+
+.white-theme-body .hero__slider::before {
+    -webkit-backdrop-filter: grayscale(1) contrast(3) blur(1px);
+    backdrop-filter: grayscale(1) contrast(3) blur(1px);
+}
+
+.white-theme-body .section-advantages {
+    background-image: url("../img/day-city.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.white-theme-body .sub-title {
+    color: black;
+}
+
+.white-theme-body .card-gradient::before {
+    box-shadow: 0 0 20px 20px rgb(245, 222, 179);
+}
+
+.white-theme-body .card-gradient:hover::before {
+    outline: solid 20px black;
+}
+
+.white-theme-body .card-gradient__gradient::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    top: -20%;
+    right: -20%;
+    bottom: -20%;
+    background: conic-gradient(from 0deg, rgb(169, 169, 169) 0%, rgb(192, 192, 192) 10%, rgb(169, 169, 169) 20%, rgb(192, 192, 192) 30%, rgb(211, 211, 211) 40%, rgb(169, 169, 169) 50%, rgb(211, 211, 211) 60%, rgb(169, 169, 169) 70%, rgb(192, 192, 192) 80%, rgb(169, 169, 169) 90%);
+    background-repeat: no-repeat;
+    animation: rotate 15s infinite linear reverse;
+}
+
+.white-theme-body .card-gradient__title,
+.white-theme-body .card-gradient__paragraph {
+    color: black;
+    text-shadow: none;
+}
+
+.white-theme-body .cube__face {
+    border-color: rgb(0, 0, 205) rgb(210, 105, 30) rgb(123, 104, 238) rgb(255, 0, 255);
+    box-shadow: 0 -10px 10px 0 rgb(0, 0, 205), 10px 0 10px 0 rgb(210, 105, 30), 0 10px 10px 0 rgb(123, 104, 238), -10px 0 10px 0 rgb(255, 0, 255), 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+    .white-theme-body .cube:hover:not(.fast-rotate) .cube__face {
+        background-color: black;
+        box-shadow: 0 0 3px 10px rgb(0, 0, 0);
+    }
+}
+
+.video-white-theme {
+    display: none;
+}
+
+.white-theme-body .video-dark-theme {
+    display: none;
+}
+
+.white-theme-body .video-white-theme {
+    display: block;
+}
+
+.white-theme-body .decor__line:nth-child(2) {
+    outline: solid rgb(245, 222, 179) 20px;
+}
+
+.white-theme-body .decor__line:nth-child(1)::before,
+.white-theme-body .decor__line:nth-child(2)::before,
+.white-theme-body .decor__line:nth-child(3)::before {
+    background-color: rgb(245, 222, 179);
+}
+
+.white-theme-body .decor__line:nth-child(2)::before {
+    display: none;
+}
+
+.white-theme-body .reviews {
+    background-color: rgb(245, 222, 179);
+}
+
+.white-theme-body .container-slider-28__content {
+    background-color: rgb(250, 235, 215);
+}
+
+.white-theme-body .container-slider-28__paragraph {
+    color: black;
+    text-shadow: 0 0 10px rgb(237, 227, 176);
+}
+
+.white-theme-body .container-slider-28__name-user {
+    color: black;
+}

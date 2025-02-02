@@ -1,5 +1,6 @@
-@use './helpers';
-@use './mediaMixins' as *;
+@use '../utils/helpers';
+@use '../utils/mediaMixins' as *;
+@use '../components/slider29';
 
 
 .hero-title {
@@ -10,6 +11,7 @@
 	-webkit-text-fill-color: transparent;
 	font-size: 80px;
 	font-weight: 900;
+
 
 	@include max_1024 {
 		font-size: 60px;
@@ -31,12 +33,12 @@
 
 	&--right {
 		background-image: linear-gradient(to right, var(--color-blue), var(--color-slate-blue), var(--color-orange), var(--color-magenta));
+		
 	}
 
 	&--left {
 		background-image: linear-gradient(to left, var(--color-blue), var(--color-slate-blue), var(--color-orange), var(--color-magenta));
 	}
-
 }
 
 .hero {
@@ -55,6 +57,7 @@
 		font-size: 50px;
 		font-weight: bold;
 		text-transform: uppercase;
+		
 	
 
 		@include max_767 {
