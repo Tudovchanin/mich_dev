@@ -1056,7 +1056,7 @@ h1, h2, h3, h4, h5, h6, p {
     }
 
     .cube:hover:not(.fast-rotate) .cube__face--bottom {
-        transform: rotateX(-90deg) translateZ(calc(var(--size-cube) / 1.9));
+        transform: rotateX(-90deg) translateZ(calc(var(--size-cube) / 2.9));
     }
 }
 
@@ -1105,7 +1105,7 @@ h1, h2, h3, h4, h5, h6, p {
     border-style: solid;
     border-color: rgb(0, 0, 205) rgb(210, 105, 30) rgb(123, 104, 238) rgb(255, 0, 255);
     filter: blur(1px);
-    box-shadow: 0 -10px 20px 0 rgb(0, 0, 205), 10px 0 20px 0 rgb(210, 105, 30), 0 10px 20px 0 rgb(123, 104, 238), -10px 0 20px 0 rgb(255, 0, 255), 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
+    box-shadow: 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
 }
 
 .cube__face--front {
@@ -1251,8 +1251,6 @@ h1, h2, h3, h4, h5, h6, p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
-    perspective: 2000px;
-    perspective-origin: 50% 50%;
     -moz-column-gap: 200px;
     column-gap: 200px;
     row-gap: 100px;
@@ -1274,7 +1272,6 @@ h1, h2, h3, h4, h5, h6, p {
     .cube-list {
         -moz-column-gap: 100px;
         column-gap: 100px;
-        perspective-origin: 50% 20%;
     }
 }
 
@@ -1292,10 +1289,77 @@ h1, h2, h3, h4, h5, h6, p {
 
 @media (max-width: 575px) {
     .cube-list {
-        perspective: 4000px;
-        perspective-origin: 50% 20%;
         grid-template-columns: 1fr;
-        row-gap: 0;
+        row-gap: 20px;
+    }
+}
+
+.cube-list__item {
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+}
+
+@media (max-width: 1279px) {
+    .cube-list__item {
+        perspective-origin: 50% 20%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item {
+        perspective: 4000px;
+    }
+}
+
+.cube-list__item:nth-child(4), .cube-list__item:nth-child(5), .cube-list__item:nth-child(6) {
+    perspective-origin: 50% -50%;
+}
+
+@media (max-width: 1680px) {
+    .cube-list__item:nth-child(3) {
+        perspective-origin: 50% -50%;
+    }
+}
+
+@media (max-width: 1680px) {
+    .cube-list__item:nth-child(5), .cube-list__item:nth-child(6) {
+        perspective-origin: 50% -140%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item:nth-child(1) {
+        perspective-origin: 50% 50%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item:nth-child(2) {
+        perspective-origin: 50% -50%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item:nth-child(3) {
+        perspective-origin: 50% -100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item:nth-child(4) {
+        perspective-origin: 50% -150%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item:nth-child(5) {
+        perspective-origin: 50% -200%;
+    }
+}
+
+@media (max-width: 575px) {
+    .cube-list__item:nth-child(6) {
+        perspective-origin: 50% -250%;
     }
 }
 
@@ -1643,7 +1707,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .white-theme-body .cube__face {
     border-color: rgb(0, 0, 205) rgb(210, 105, 30) rgb(123, 104, 238) rgb(255, 0, 255);
-    box-shadow: 0 -10px 10px 0 rgb(0, 0, 205), 10px 0 10px 0 rgb(210, 105, 30), 0 10px 10px 0 rgb(123, 104, 238), -10px 0 10px 0 rgb(255, 0, 255), 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
+    box-shadow: 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {

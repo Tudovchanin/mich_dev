@@ -6,15 +6,14 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
 
-  perspective: 2000px;
-  perspective-origin: 50% 50%;
+
   column-gap: 200px;
   row-gap: 100px;
-
   padding-top: 120px;
   padding-right: 200px;
   padding-left: 200px;
   padding-bottom: 120px;
+
 
   @include max_1680 {
     grid-template-columns: 1fr 1fr;
@@ -24,7 +23,6 @@
 
   @include max_1279 {
     column-gap: 100px;
-    perspective-origin: 50% 20%;
   }
 
   @include max_1024 {
@@ -37,11 +35,72 @@
   }
 
   @include max_575 {
-    perspective: 4000px;
-    perspective-origin: 50% 20%;
     grid-template-columns: 1fr;
-    row-gap: 0;
+    row-gap: 20px;
   }
 
 
+  &__item {
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+   
+
+    @include max_1279 {
+      perspective-origin: 50% 20%;
+    }
+
+    @include max_575 {
+      perspective: 4000px;
+    }
+  }
+  &__item:nth-child(4),
+  &__item:nth-child(5),
+  &__item:nth-child(6) {
+    perspective-origin: 50% -50%;
+  }
+
+
+  &__item:nth-child(3) {
+    @include max_1680 {
+      perspective-origin: 50% -50%;
+    }
+  }
+  &__item:nth-child(5),
+  &__item:nth-child(6) {
+    @include max_1680 {
+      perspective-origin: 50% -140%;
+    }
+  }
+
+  // mobile
+  &__item:nth-child(1) {
+    @include max_575 {
+      perspective-origin: 50% 50%;
+    }
+  }
+  &__item:nth-child(2) {
+    @include max_575 {
+      perspective-origin: 50% -50%;
+    }
+  }
+  &__item:nth-child(3) {
+    @include max_575 {
+      perspective-origin: 50% -100%;
+    }
+  }
+  &__item:nth-child(4) {
+    @include max_575 {
+      perspective-origin: 50% -150%;
+    }
+  }
+  &__item:nth-child(5) {
+    @include max_575 {
+      perspective-origin: 50% -200%;
+    }
+  }
+  &__item:nth-child(6) {
+    @include max_575 {
+      perspective-origin: 50% -250%;
+    }
+  }
 }

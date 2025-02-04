@@ -51,7 +51,7 @@
         }
 
         &--bottom {
-          transform: rotateX(-90deg) translateZ(calc(var(--size-cube) / 1.9));
+          transform: rotateX(-90deg) translateZ(calc(var(--size-cube) / 2.9));
           // opacity: 0;
         }
       }
@@ -107,10 +107,10 @@
     border-color: rgb(0, 0, 205) rgb(210, 105, 30) rgb(123, 104, 238) rgb(255, 0, 255);
     filter: blur(1px);
     box-shadow:
-      0 -10px 20px 0 rgb(0, 0, 205),
-      10px 0 20px 0 rgb(210, 105, 30),
-      0 10px 20px 0 rgb(123, 104, 238),
-      -10px 0 20px 0 rgb(255, 0, 255),
+      // 0 -10px 20px 0 rgb(0, 0, 205),
+      // 10px 0 20px 0 rgb(210, 105, 30),
+      // 0 10px 20px 0 rgb(123, 104, 238),
+      // -10px 0 20px 0 rgb(255, 0, 255),
 
       0 -10px 10px 0 rgb(0, 0, 205) inset,
       10px 0 10px 0 rgb(210, 105, 30) inset,

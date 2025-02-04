@@ -61,7 +61,7 @@
 
 .white-theme-body .cube__face {
     border-color: rgb(0, 0, 205) rgb(210, 105, 30) rgb(123, 104, 238) rgb(255, 0, 255);
-    box-shadow: 0 -10px 10px 0 rgb(0, 0, 205), 10px 0 10px 0 rgb(210, 105, 30), 0 10px 10px 0 rgb(123, 104, 238), -10px 0 10px 0 rgb(255, 0, 255), 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
+    box-shadow: 0 -10px 10px 0 rgb(0, 0, 205) inset, 10px 0 10px 0 rgb(210, 105, 30) inset, 0 10px 10px 0 rgb(123, 104, 238) inset, -10px 0 10px 0 rgb(255, 0, 255) inset;
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {
