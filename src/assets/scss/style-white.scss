@@ -150,3 +150,29 @@
   color: black;
 }
 
+
+.white-theme-body .new {
+
+  &::before {
+    background-image: url('../img/new-white.png');
+
+  }
+  
+}
+
+.white-theme-body .new-product__title {
+  color: black;
+}
+
+.white-theme-body .new-product__link {
+  background-color: black;
+  color: white;
+  @include helpers.hover-and-pointer {
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      color: black;
+    }
+   
+  }
+  
+}

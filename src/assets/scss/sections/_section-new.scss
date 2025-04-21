@@ -1,0 +1,77 @@
+@use '../utils/helpers';
+@use '../utils/mediaMixins' as *;
+
+
+.new {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  gap: 400px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  @include max_1024 {
+    gap: 200px;
+  }
+ @include max_767 {
+  padding-top: 25px;
+ }
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/new.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+    @include min_1949 {
+
+      width:min(62vw,2000px);
+      clip-path: none;
+
+    }
+    @include max_1024 {
+      
+    }
+  }
+
+
+  &__title {
+    color: rgb(250, 235, 215);
+    // backdrop-filter: blur(20px);
+    // background-color: red;
+    width: 200px;
+  }
+}
+
+
+.new-product {
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  &__link {
+    font-size: 20px;
+    max-width: 200px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    @include helpers.hover-and-pointer {
+      transition: color .3s, background-color .3s;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}

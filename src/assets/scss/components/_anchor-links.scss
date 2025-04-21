@@ -1,0 +1,37 @@
+@use '../utils/helpers';
+@use '../utils/mediaMixins' as *;
+
+
+
+.anchor-links {
+
+  display: flex;
+  flex-direction: column;
+	gap: 15px;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-shadow: var(--text-shadow-v1);
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: .1em;
+
+  @include max_767 {
+     font-size: 16px;
+  }
+
+  &__link {
+    @include helpers.hover-and-pointer {
+      transition: transform ease-in .3s, .3s color .3s ease, text-shadow .3s ease;
+
+      &:hover {
+        transform: translateX(10px);
+		color: var(--color-main-bg);
+      }
+    }
+  }
+
+}
+
+
+

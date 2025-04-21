@@ -17,6 +17,7 @@
 
 @use './sections/header';
 @use './sections/section-hero';
+@use './sections/section-new';
 @use './sections/section-advantages';
 @use './sections/section-projects';
 @use './sections/section-reviews';
@@ -29,7 +30,6 @@ body {
   color: var(--color-text-v2);
   background-color: black;
   font-family: sans-serif;
-
 }
 
 
@@ -74,7 +74,7 @@ body {
   letter-spacing: .15em;
   text-decoration: underline;
 
-  @include max_767 {
+  @include max_1024 {
     font-size: min(30px, 10vw);
   }
 }
