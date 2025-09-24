@@ -797,7 +797,6 @@ h1, h2, h3, h4, h5, h6, p {
     z-index: 4;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    background: gold;
 }
 
 @media (max-width: 767px) {
@@ -1871,6 +1870,10 @@ h1, h2, h3, h4, h5, h6, p {
     }
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
     color: var(--color-text-v2);
@@ -2018,7 +2021,7 @@ body {
     transform-style: preserve-3d;
 }
 
-.run-dog-run {
+.run-dog--run {
     transition: transform 3s cubic-bezier(0, 0.69, 0.98, 0.02);
     transform: translateX(-100vw);
 }

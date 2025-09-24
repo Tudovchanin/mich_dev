@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
       danceMan($manHeader, $danceHeaderBtn);
       toggleAudio(audioObj);
       soundPlay(audioBtnDance);
-      $runDog.classList.toggle('run-dog-run',  $manHeader.classList.contains('man-sprite--dance'));
+      $runDog.classList.toggle('run-dog--run',  $manHeader.classList.contains('man-sprite--dance'));
     })
   }
 

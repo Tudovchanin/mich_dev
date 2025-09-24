@@ -31,7 +31,7 @@ function slider29({
     console.log(allSlideItem.length);
     if (activeSlide !== 0) {
 
-      await loadImages(lazyLoadImages[activeSlide]);
+      loadImages(lazyLoadImages[activeSlide]);
     }
 
     allSlideItem[activeSlide].classList.add('active-slide-29');
@@ -46,7 +46,7 @@ function slider29({
     allSlideItem[activeSlide].classList.remove('active-slide-29');
 
     activeSlide = !activeSlide ? allSlideItem.length - 1 : activeSlide - 1;
-    await loadImages(lazyLoadImages[activeSlide]);
+        loadImages(lazyLoadImages[activeSlide]);
 
     allSlideItem[activeSlide].classList.add('active-slide-29');
 
@@ -66,8 +66,6 @@ function slider29({
       image.src = `./assets/img/${arrPathImg[activeSlide]}`;
     }
   }
-
-
 }
 
 

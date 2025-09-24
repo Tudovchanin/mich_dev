@@ -23,6 +23,9 @@
 @use './sections/section-reviews';
 @use './style-white.scss';
 
+html {
+  scroll-behavior: smooth;
+}
 
 
 body {
@@ -32,24 +35,6 @@ body {
   font-family: sans-serif;
 }
 
-
-// background: linear-gradient(120deg, #000000, #434343, #000000);
-// background-size: 300% 300%;
-// animation: gradientShift 6s ease infinite;
-
-// @keyframes gradientShift {
-//   0% {
-//     background-position: 0% 50%;
-//   }
-
-//   50% {
-//     background-position: 100% 50%;
-//   }
-
-//   100% {
-//     background-position: 0% 50%;
-//   }
-// }
 
 .main {
   overflow: hidden;
@@ -187,12 +172,10 @@ body {
     transform: rotateX(0deg) rotateY(20deg);
     transform-style: preserve-3d;
   }
-}
 
+  &--run {
+    transition: transform 3s cubic-bezier(0,.69,.98,.02);
+    transform: translateX(-100vw);
+  }
 
-
-
-.run-dog-run {
-  transition: transform 3s cubic-bezier(0,.69,.98,.02);
-  transform: translateX(-100vw);
 }
