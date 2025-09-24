@@ -16,7 +16,7 @@ function slider29({
 
   let activeSlide = 0;
 
-  btnNext.addEventListener('click', async () => {
+  btnNext.addEventListener('click', () => {
 
     if (callbackPlay && sound) {
       callbackPause(sound, resetSound)
@@ -41,7 +41,7 @@ function slider29({
 
   });
 
-  btnPrev.addEventListener('click', async () => {
+  btnPrev.addEventListener('click', () => {
 
     allSlideItem[activeSlide].classList.remove('active-slide-29');
 

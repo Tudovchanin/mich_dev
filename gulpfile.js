@@ -209,7 +209,7 @@ function clean() {
 }
 
 // Функция для наблюдения за изменениями файлов и автоматического запуска соответствующих задач Gulp 
-function watchFiles() {
+function watchFiles(done) {
     gulp.watch([path.watch.html], html); // Наблюдает за изменениями HTML файлов и запускает задачу html()
     gulp.watch([path.watch.css], css); // Наблюдает за изменениями SCSS файлов и запускает задачу css()
     gulp.watch([path.watch.js], js); // Наблюдает за изменениями JS файлов и запускает задачу js()

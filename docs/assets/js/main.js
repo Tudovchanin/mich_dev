@@ -48,7 +48,7 @@ function slider29({
 
   let activeSlide = 0;
 
-  btnNext.addEventListener('click', async () => {
+  btnNext.addEventListener('click', () => {
 
     if (callbackPlay && sound) {
       callbackPause(sound, resetSound)
@@ -73,7 +73,7 @@ function slider29({
 
   });
 
-  btnPrev.addEventListener('click', async () => {
+  btnPrev.addEventListener('click', () => {
 
     allSlideItem[activeSlide].classList.remove('active-slide-29');
 
@@ -793,5 +793,123 @@ document.addEventListener('DOMContentLoaded', function () {
     const number = Math.floor(Math.random() * (max - min + 1)) + min;
     return number;
   }
+
+
+
+// new ball slider 
+
+
+const elements = document.querySelectorAll('.slider-new__img');
+
+
+const lengthElements = elements.length;
+let index = 0;
+let randomIndex = 0;
+
+const randomSlide = (index) => {
+  removeActiveClass();
+  document.documentElement.style.setProperty('--value', '200deg' );
+  elements[index].classList.add('slider-new__img--active');
+}
+
+
+const removeActiveClass = () => {
+  elements.forEach(e => {
+    e.classList.remove('slider-new__img--active');
+  })
+}
+
+
+const circle = document.querySelector('.slider-new__ball');
+
+console.log(circle);
+
+let valueMousedownX = 0;
+let valueMousedownY = 0;
+let positionX = 0;
+let positionY = 0;
+let dragover = false;
+
+circle.addEventListener('mousedown', (e)=> {
+  e.preventDefault();
+  console.log(e.clientX);
+ startDrag(e.clientX, e.clientY);
+  
+})
+
+circle.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  startDrag(touch.clientX, touch.clientY);
+}, {passive: false});
+
+function startDrag(valX, valY) {
+  valueMousedownX = valX;
+  valueMousedownY = valY;
+  dragover = true;
+  document.body.classList.toggle('grabbing', dragover);
+  activeSlide = document.querySelector('.slider-new__img--active');
+}
+
+let widthPage = document.documentElement.clientWidth
+console.log(widthPage);
+
+window.addEventListener('mousemove', (e)=> {
+e.preventDefault();
+
+  if(!dragover) return;
+  dragMove(e.clientX, e.clientY);
+})
+window.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  if(!dragover) return;
+  const touch = e.touches[0];
+  dragMove(touch.clientX, touch.clientY);
+},{passive:false});
+
+function dragMove(valX, valY) {
+  randomIndex = Math.round((valX / widthPage) * (lengthElements-1));
+
+// console.log(e.clientX / widthPage);
+
+if(randomIndex !== index) {
+  console.log('изменить картинку на', randomIndex);
+  index = randomIndex;
+  randomSlide(index);
+} else {
+
+  // activeSlide.style.borderRadius = `${(e.clientX / widthPage) * 100}%`
+}
+  const X = valX - valueMousedownX + positionX;
+  const Y = valY - valueMousedownY + positionY;
+  requestAnimationFrame(()=> {
+    circle.style.transform = `translate(${X}px, ${Y}px)`;
+  })
+}
+
+window.addEventListener('mouseup', (e)=> {
+  
+dragEnd(e.clientX, e.clientY)
+});
+
+window.addEventListener('touchend', (e) => {
+  if(e.changedTouches[0]) {
+    const touch = e.changedTouches[0];
+    dragEnd(touch.clientX, touch.clientY);
+  }
+});
+
+function dragEnd(valX, valY) {
+  if(dragover) {
+    positionX += (valX - valueMousedownX);
+    positionY += (valY - valueMousedownY);
+    activeSlide = null;
+  }
+  dragover = false;
+  document.body.classList.toggle('grabbing', dragover)
+}
+
+
+
 
 });
